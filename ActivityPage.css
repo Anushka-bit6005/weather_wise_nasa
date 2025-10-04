@@ -1,0 +1,174 @@
+.activity-page-root {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+  color: #fff;
+  transition: background 0.5s ease;
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+}
+
+/* Moving background gradients for activities */
+.activity-page-root.hiking {
+  background: linear-gradient(45deg, #a8e6cf, #dcedc1, #2ecc71, #55efc4);
+}
+.activity-page-root.fishing {
+  background: linear-gradient(45deg, #00c6ff, #5ca1f4, #00f2fe, #74ebd5);
+}
+.activity-page-root.sightseeing {
+  background: linear-gradient(45deg, #ff9a8b, #f4768f, #ffb3a7, #ffd1dc);
+}
+.activity-page-root.camping {
+  background: linear-gradient(45deg, #a8c3e0, #58e3b2, #a5eac6, #2e3a40);
+}
+.activity-page-root.food-tours {
+  background: linear-gradient(45deg, #ffafbd, #ffc3a0, #ffebc7, #fff1b5);
+}
+.activity-page-root.beach-fun {
+  background: linear-gradient(45deg, #fbc2eb, #a6c1ee, #fceabb, #90f7ec);
+}
+.activity-page-root.cycling {
+  background: linear-gradient(45deg, #f6d365, #eda895, #fbc2eb, #a6c1ee);
+}
+
+/* Card styles */
+.trip-day-card {
+  perspective: 1000px;
+  width: 320px;
+  min-height: 350px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  transition: transform 0.6s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent to allow background glow */
+  backdrop-filter: blur(10px); /* frosted effect for readability */
+}
+
+.trip-day-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(245, 166, 35, 0.4);
+}
+
+/* Glow effect behind card */
+.trip-day-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, rgba(50, 83, 228, 0.15), rgba(255, 102, 102, 0.15), rgba(102, 204, 255, 0.15));
+  animation: rotateGlow 6s linear infinite;
+  z-index: -1; /* push behind all content */
+  border-radius: 20px;
+  filter: blur(40px);
+}
+
+/* Keep card content above glow */
+.card-front, .card-back {
+  position: relative;
+  z-index: 1;
+}
+
+/* Chart tweaks to make all text visible */
+.recharts-cartesian-axis-tick-value,
+.recharts-legend-item-text,
+.recharts-label {
+  fill: #000 !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  text-shadow: 0px 0px 3px #fff; /* subtle white glow for contrast */
+}
+
+.recharts-tooltip-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Input and button styles */
+.activity-inputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.activity-inputs input,
+.activity-inputs button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.activity-inputs input {
+  background: #fff5e6;
+  color: #333;
+}
+
+.activity-inputs button {
+  background: linear-gradient(45deg, #f5a623, #f8e71c);
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+}
+
+.activity-inputs button:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.6);
+}
+
+/* Error banner */
+.error-banner {
+  color: white;
+  background: #e74c3c;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Activity intro boxes */
+.activity-intro {
+  margin: 15px 0 25px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-size: 1rem;
+  color: #000; /* text now always visible */
+  line-height: 1.5;
+  animation: fadeInIntro 0.8s ease;
+}
+
+.activity-intro p {
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+@keyframes fadeInIntro {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glow rotation animation */
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Gradient animation for page background */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

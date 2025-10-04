@@ -1,0 +1,75 @@
+/* --- About Page Container --- */
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #0a0f2c, #1b2a55, #162447, #0a0f2c);
+  background-size: 800% 800%;
+  animation: gradientMove 30s ease infinite;
+  color: #fffacd;
+  text-align: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Animated gradient background */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* About content box */
+.about-content {
+  max-width: 800px;
+  padding: 30px 25px;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent dark overlay */
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Fade in animation for content */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* About heading */
+.about-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #ffd700;
+  text-shadow: 0 0 10px #ffd700, 0 0 20px #fffacd;
+}
+
+/* About paragraphs */
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  margin-bottom: 15px;
+}
+
+/* Return Home button */
+.return-home-btn {
+  margin-top: 25px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ffde59, #ffd700);
+  color: #000;
+  box-shadow: 0 0 15px #ffde59;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.return-home-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ffd700;
+}
+
+
+

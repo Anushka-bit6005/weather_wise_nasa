@@ -1,0 +1,165 @@
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2c2c54, #3a3a78, #1f1f3a);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite alternate;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Moving soft particles behind box */
+.auth-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,204,0,0.15) 2px, transparent 2px) repeat;
+  background-size: 50px 50px;
+  animation: moveParticles 60s linear infinite;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+@keyframes moveParticles {
+  0% { transform: translate(0,0) rotate(0deg); }
+  100% { transform: translate(-30%, -30%) rotate(360deg); }
+}
+
+/* Gradient shift for container */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Auth box styling */
+.auth-box {
+  background: rgba(20, 20, 40, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 40px 50px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 380px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
+  animation: fadeInBox 1s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeInBox {
+  0% { transform: scale(0.9) translateY(-20px); opacity: 0; }
+  60% { transform: scale(1.05) translateY(5px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* Auth title glow */
+.auth-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffcc00;
+  text-shadow: 0 0 6px rgba(255,204,0,0.6), 0 0 12px rgba(255,204,0,0.4);
+  animation: glowText 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 0 6px rgba(255,204,0,0.6), 0 0 12px rgba(255,204,0,0.4); }
+  50% { text-shadow: 0 0 14px rgba(255,204,0,0.8), 0 0 28px rgba(255,204,0,0.5); }
+  100% { text-shadow: 0 0 6px rgba(255,204,0,0.6), 0 0 12px rgba(255,204,0,0.4); }
+}
+
+/* Inputs */
+.auth-box input, .auth-box select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.auth-box input:focus, .auth-box select:focus {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 8px #ffcc00;
+}
+
+/* Buttons */
+.auth-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #ffcc00;
+  background: rgba(255,204,0,0.1);
+  font-weight: bold;
+  color: #ffcc00;
+  cursor: pointer;
+  text-shadow: 0 0 2px #fff;
+  transition: all 0.3s ease;
+  animation: btnGlow 2s ease-in-out infinite alternate;
+}
+
+.auth-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,204,0,0.8);
+}
+
+@keyframes btnGlow {
+  0% { box-shadow: 0 0 6px rgba(255,204,0,0.5); }
+  50% { box-shadow: 0 0 18px rgba(255,204,0,0.8); }
+  100% { box-shadow: 0 0 6px rgba(255,204,0,0.5); }
+}
+
+/* Switch text */
+.switch-text {
+  color: #ccc;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.switch-text span {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #ffcc00;
+}
+
+/* Question / error */
+.question { color: #ccc; font-weight: bold; margin-top: 10px; }
+.error { color: #ff4d4d; text-align: center; }
+
+/* Success popup */
+.signup-success {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,204,0,0.2);
+  backdrop-filter: blur(10px);
+  color: #ffcc00;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 28px 45px;
+  border-radius: 20px;
+  text-align: center;
+  animation: successPop 0.8s ease-in-out, fadeOutSuccess 2.5s forwards;
+  z-index: 10;
+}
+
+@keyframes successPop {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes fadeOutSuccess {
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
